@@ -1,19 +1,20 @@
-def combination(t, min, max, l):    
-    res = []  
+def combination(t, l, min):  
+    print(t, l)
+    res = []
     if l == 1 and t <= 9:
-        res.append([t])  
+        res.append([t])
     elif l == 0:
-        return res    
-    else:               
-        for i in range(min, max, 1):            
-            if i <= int(t / l):               
-                Arrays = combination(t - i, i + 1, max, l - 1)                                      
-                for j in range(0, len(Arrays), 1):
-                    array = Arrays[j]
-                    if i not in array:
-                        array.insert(0, i)                    
-                        res.append(array)
-    return res   
+        return res
+    else:
+        for i in range(min, 9, 1):
+            if i <= int(t / l):
+                array = combination(t - i, l - 1, min + 1)
+                for n in range(0, len(array), 1):
+                    currentArr = array[n]
+                    if i not in currentArr:
+                        currentArr.insert(0, i)
+                        res.append(currentArr)            
+    return res
 
 
 
@@ -21,6 +22,4 @@ def combination(t, min, max, l):
 if __name__ == "__main__":
     length = input("Input length of combination : ")
     total = input("Input total of combination: ")
-    minvalue = 1
-    maxValue = 9
-    print(combination(int(total), minvalue, maxValue, int(length)))
+    print(combination(int(total), int(length), 1))
