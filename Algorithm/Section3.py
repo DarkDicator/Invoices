@@ -1,5 +1,4 @@
-def combination(t, l, min):  
-    print(t, l)
+def combination(t, l, min):      
     res = []
     if l == 1 and t <= 9:
         res.append([t])
